@@ -458,11 +458,11 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 // //2
 // const bill = 40;
 //3
-const bill = 430; 
+// const bill = 430; 
 
-const tip = bill >= 50 && bill <= 300 ? bill * 0.15 :
-bill * 0.2;
+// const tip = bill >= 50 && bill <= 300 ? bill * 0.15 :
+// bill * 0.2;
 
-console.log(`Your bill is ${bill}
-Your tip is ${tip}
-Your final bill is ${bill + tip}`);
+// console.log(`Your bill is ${bill}
+// Your tip is ${tip}
+// Your final bill is ${bill + tip}`);
