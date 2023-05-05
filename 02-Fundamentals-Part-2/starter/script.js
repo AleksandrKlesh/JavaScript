@@ -55,3 +55,4 @@ const calcAge2 = function (birthYear) {
 const age2 = calcAge2(1995);
 
 console.log(age, age2)
+
