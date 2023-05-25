@@ -121,3 +121,57 @@ const num = Number('23');
 // console.log(yearsUntilRetirement(1990, 'Alex'));
 // console.log(yearsUntilRetirement(1970, 'Jim'));
 
+// // Coding challenge 
+
+// const calcAverage = (game0, game1, game2) => {
+//     return (game0 + game1 + game2) / 3;
+// }
+
+// const avgDolphins = calcAverage(44, 23, 71);
+// const avgKoalas = calcAverage(65, 54, 49);
+
+// const avgDolphins = calcAverage(85, 54, 41);
+// const avgKoalas = calcAverage(23, 34, 27);
+
+// const checkWinner = function (avgDolphins, avgKoalas) {
+//     if (avgDolphins >= avgKoalas * 2) {
+//         return `Dolphins win (${avgDolphins} vs ${avgKoalas})`
+//     } else if (avgDolphins * 2 <= avgKoalas) {
+//         return `Koalas win (${avgKoalas} vs ${avgDolphins})`
+//     } else {
+//         return 'Nobody wins!'
+//     }
+// };
+
+// console.log(checkWinner(avgDolphins,avgKoalas));
+
+// //Real answer
+
+// const calcAverage = (a, b, c) => (a + b + c) / 3;
+
+// let scoreDolphins = calcAverage(44, 23, 71);
+// let scoreKoalas = calcAverage(65, 54, 49);
+
+// // const scoreDolphins = calcAverage(85, 54, 41);
+// // const scoreKoalas = calcAverage(23, 34, 27);
+
+// console.log(scoreDolphins,scoreKoalas);
+
+// const checkWinner = function (avgDolphins, avgKoalas) {
+//     if (avgDolphins >= avgKoalas * 2) {
+//         console.log(`Dolphins win (${avgDolphins} vs ${avgKoalas})`)
+//     } else if (avgDolphins * 2 <= avgKoalas) {
+//         console.log(`Koalas win (${avgKoalas} vs ${avgDolphins})`)
+//     } else {
+//         console.log('Nobody wins!')
+//     }
+// };
+
+// checkWinner(scoreDolphins,scoreKoalas);
+
+// scoreDolphins = calcAverage(85, 54, 41);
+// scoreKoalas = calcAverage(23, 34, 27);
+
+// console.log(scoreDolphins,scoreKoalas);
+
+// checkWinner(scoreDolphins,scoreKoalas);
