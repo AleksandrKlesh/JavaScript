@@ -175,3 +175,149 @@ const num = Number('23');
 // console.log(scoreDolphins,scoreKoalas);
 
 // checkWinner(scoreDolphins,scoreKoalas);
+
+// Arrays
+
+// const friend1 = 'Michael';
+// const friend2 = 'Steven';
+// const friend3 = 'Peter';
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+// console.log(friends);
+
+// const y = new Array(1991, 1984, 2008, 2022);
+
+// console.log(friends[0]);
+// console.log(friends[1]);
+// console.log(friends[2]);
+
+// console.log(friends.length);
+// console.log(friends.length - 1);
+
+// friends[2] = 'Jay';
+// console.log(friends)
+
+// const firstName = 'Alex';
+// const alex = [firstName, 'Kl', 2037 - 1993, 'teacher', friends];
+// console.log(alex);
+// console.log(alex.length);
+
+// // Exercise
+
+// const calcAge = function (birthYear) {
+//         return 2037 - birthYear;
+// }
+
+// const years = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years));
+
+// const age1 = 2037 - years[0];
+// const age2 = 2037 - years[1];
+// const age3 = 2037 - years[years.length - 1];
+
+// console.log(age1, age2, age3);
+
+// const ages = [2037 - years[0], 2037 - years[1], 2037 - years[years.length - 1]];
+
+// console.log(ages);
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+
+// // Add elements
+// const newLength = friends.push('Jay');
+// console.log(friends);
+// console.log(newLength);
+
+// const newLength1 = friends.unshift('John');
+// console.log(friends);
+// console.log(newLength1);
+
+// // Remove elements
+
+// friends.pop(friends); // Last
+// const popped = friends.pop();
+
+// console.log(friends);
+// console.log(popped);
+
+// friends.shift();  // First
+// console.log(friends);
+
+// console.log(friends.indexOf('Steven'));
+// console.log(friends.indexOf('Bob'));
+
+// friends.push(23);
+
+// console.log(friends.includes('Steven'));
+// console.log(friends.includes('Bob'));
+// console.log(friends.includes(23));
+
+// if (friends.includes('Peter')) {
+//     console.log('You have a friend called Peter')
+// } else {
+//     console.log('You do not have friend called Peter');
+// };
+
+// Coding challenge #2
+
+// const tip = function calcTip(bill) {
+//     if (bill >= 50 && bill <= 300) {
+//         return bill * 0.15;
+//     } else {
+//         return bill * 0.2;
+//     }
+// };
+
+// console.log(tip(10));
+// const bills = [125, 555, 44];
+
+// const tips = [tip(bills[0]),
+//               tip(bills[1]), 
+//               tip(bills[bills.length - 1])];
+// console.log(tips);
+
+// const total = [bills[0] + tips[0],
+//                bills[1] + tips[1],
+//                bills[bills.length - 1] + tips[tips.length - 1]];
+// console.log(total);
+
+// // Real answer
+
+// const calcTip = function(bill) {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// // const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+// console.log(calcTip(10));
+// const bills = [125, 555, 44];
+
+// const tips = [calcTip(bills[0]),
+//               calcTip(bills[1]), 
+//               calcTip(bills[bills.length - 1])];
+// console.log(tips);
+
+// const total = [bills[0] + tips[0],
+//                bills[1] + tips[1],
+//                bills[bills.length - 1] + tips[tips.length - 1]];
+// console.log(total);
+
+// // Objects
+
+const alexArray = [
+    'Alex',
+    'kl',
+    2037 - 1993,
+    'teacher',
+    ['Michael', 'Jim', 'Steven']
+];
+
+const  alex = {
+    firstName: 'Alex',
+    secondName: 'Kl',
+    age: 2037 - 1993,
+    job: 'teacher',
+    friens: [alexArray[alexArray.length - 1]]
+};
+
+console.log(alex);
