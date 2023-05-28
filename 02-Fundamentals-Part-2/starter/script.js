@@ -304,20 +304,54 @@ const num = Number('23');
 
 // // Objects
 
-const alexArray = [
-    'Alex',
-    'kl',
-    2037 - 1993,
-    'teacher',
-    ['Michael', 'Jim', 'Steven']
-];
+// const alexArray = [
+//     'Alex',
+//     'kl',
+//     2037 - 1993,
+//     'teacher',
+//     ['Michael', 'Jim', 'Steven']
+// ];
 
-const  alex = {
-    firstName: 'Alex',
-    secondName: 'Kl',
-    age: 2037 - 1993,
-    job: 'teacher',
-    friens: [alexArray[alexArray.length - 1]]
-};
+// const  alex = {
+//     firstName: 'Alex',
+//     secondName: 'Kl',
+//     age: 2037 - 1993,
+//     job: 'teacher',
+//     friens: [alexArray[alexArray.length - 1]]
+// };
 
-console.log(alex);
+// console.log(alex);
+
+// const  alex = {
+//     firstName: 'Alex',
+//     lastName: 'Kl',
+//     age: 2037 - 1993,
+//     job: 'teacher',
+//     friends: ['Michael', 'Jim', 'Steven']
+// };
+
+// console.log(alex.friends);
+// console.log(alex[`firstName`]);
+
+// const nameKey = 'Name';
+// console.log(alex[`first` + nameKey]);
+// console.log(alex[`last` + nameKey]);
+
+// // const interestedIn = prompt('What do you want to know about Alex? Choose between firstName, lastName, age, job and friends.');
+// // console.log(interestedIn);
+
+// // if (alex[interestedIn]) {
+// //     console.log(alex[interestedIn]);
+// // } else {
+// //     console.log('Wrong request. Choose between firstName, lastName, age, job and friends.')
+// // };
+
+// alex.location = 'Portugal';
+// alex['twitter'] = '@alexkl';
+
+// console.log(alex);
+
+// // // Challenge
+// // // Jonas has 3 friends, and his best friend is called Michael.
+
+// console.log(`${alex.firstName} has ${alex.friends.length} friends, and his best friend is called ${alex.friends[0]}`);
