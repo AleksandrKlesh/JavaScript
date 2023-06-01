@@ -355,3 +355,110 @@ const num = Number('23');
 // // // Jonas has 3 friends, and his best friend is called Michael.
 
 // console.log(`${alex.firstName} has ${alex.friends.length} friends, and his best friend is called ${alex.friends[0]}`);
+
+// const  alex = {
+//     firstName: 'Alex',
+//     lastName: 'Kl',
+//     birthYear: 1993,
+//     job: 'teacher',
+//     friends: ['Michael', 'Jim', 'Steven'],
+//     hasDriversLicence: true,
+
+//     // calcAge: function (birthYear) {
+//     //     return 2037 - birthYear;
+//     // }
+
+//     // calcAge: function () {
+//     //     console.log(this);
+//     //     return 2037 - this.birthYear;
+//     // }
+
+//     calcAge: function () {
+//         console.log(this);
+//         this.age = 2037 - this.birthYear;
+//         return this.age
+//     },
+
+//     getSummary: function () {
+//         return `${this.firstName} is ${this.age} years old ${this.job}, and  he has ${this.hasDriversLicence ? 'a' : 'no'} driver's licence.`;
+//     }
+
+// };
+
+// console.log(alex.calcAge());
+// console.log(alex.age);
+// // console.log(alex['calcAge']());
+
+// // // "Alex is 44 years old teacher, and he has a driving licence"
+
+// console.log(alex.getSummary());
+
+// // Coding challenge
+
+// const john = {
+//     fullName: 'John Smith',
+//     mass: 92,
+//     height: 1.95,
+
+//     calcBMI: function () {
+//         this.BMI = this.mass / (Math.pow(this.height, 2));
+//         return this.BMI = this.BMI.toFixed(2)    
+//     }
+// };
+
+// const mark = {
+//     fullName: 'Mark Miller',
+//     mass: 78,
+//     height: 1.69,
+
+//     calcBMI: function () {
+//         this.BMI = this.mass / (Math.pow(this.height, 2));
+//         return this.BMI = this.BMI.toFixed(2);
+//     }
+// };
+
+// const compare = () => { 
+//              return mark.calcBMI() < john.calcBMI() ? 'higher than'
+//                     : mark.calcBMI() > john.calcBMI() ? 'lower than'
+//                     : 'equal to';
+// };
+
+// //John's BMI (28.3) is higher than Mark's (23.9)!
+
+// console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is ${compare()} ${mark.fullName}'s (${mark.calcBMI()})`);
+
+
+// // Real answer
+
+// const john = {
+//     fullName: 'John Smith',
+//     mass: 92,
+//     height: 1.95,
+
+//     calcBMI: function () {
+//         this.bmi = this.mass / this.height ** 2;
+//         return this.bmi 
+//     }
+// };
+
+// const mark = {
+//     fullName: 'Mark Miller',
+//     mass: 78,
+//     height: 1.69,
+
+//     calcBMI: function () {
+//         this.bmi = this.mass / this.height ** 2;
+//         return this.bmi 
+//     }
+// };
+
+// mark.calcBMI();
+// john.calcBMI();
+
+// console.log(mark.bmi, john.bmi);
+
+// if (mark.bmi > john.bmi) {
+//     console.log(`${mark.fullName}'s (${mark.bmi}) BMI is higher than ${john.fullName} (${john.bmi})`);
+// } else if (john.bmi > mark.bmi) {
+//     console.log(`${mark.fullName}'s (${mark.bmi}) BMI is lower than ${john.fullName} (${john.bmi})`);
+// }
