@@ -462,3 +462,80 @@ const num = Number('23');
 // } else if (john.bmi > mark.bmi) {
 //     console.log(`${mark.fullName}'s (${mark.bmi}) BMI is lower than ${john.fullName} (${john.bmi})`);
 // }
+
+// console.log('Lifting weights repetition 1');
+// console.log('Lifting weights repetition 2');
+// console.log('Lifting weights repetition 3');
+// console.log('Lifting weights repetition 4');
+// console.log('Lifting weights repetition 5');
+// console.log('Lifting weights repetition 6');
+// console.log('Lifting weights repetition 7');
+// console.log('Lifting weights repetition 8');
+// console.log('Lifting weights repetition 9');
+// console.log('Lifting weights repetition 10');
+
+// for(let rep = 1; rep <= 10; rep++ ){
+//     console.log('Lifting weights repetition' + rep);
+// };
+
+// const alex = [
+//     'Alex',
+//     'kl',
+//     2037 - 1993,
+//     'teacher',
+//     ['Michael', 'Jim', 'Steven'],
+//     true
+// ];
+
+// const types = [];
+
+// for(let i = 0; i < alex.length; i++) {
+//     // Reading from alex array
+//     console.log(alex[i], typeof alex[i]);
+
+//     // Filling types array
+//     // types[i] = typeof alex[i];
+
+//     types.push(typeof alex[i]);
+// };
+
+// console.log(types);
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for(let i = 0; i < years.length; i++) {
+//     ages.push(2037 - years[i]);
+// };
+
+// console.log(ages);
+
+// // Continue and break
+
+// console.log('--- ONLY STRINGS ---');
+
+// for(let i = 0; i < alex.length; i++) {
+//     if (typeof alex[i] !== 'string') continue;
+
+//     console.log(alex[i], typeof alex[i]);
+// };
+
+// console.log('--- BREAK WITH NUMBERS ---');
+
+// for(let i = 0; i < alex.length; i++) {
+//     if (typeof alex[i] === 'number') break;
+
+//     console.log(alex[i], typeof alex[i]);
+// };
+
+const alex = [
+    'Alex',
+    'kl',
+    2037 - 1993,
+    'teacher',
+    ['Michael', 'Jim', 'Steven'],
+];
+
+for(let i = alex.length - 1; i > -1; i--) [
+    console.log(alex[i])
+];
