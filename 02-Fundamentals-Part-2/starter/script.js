@@ -528,14 +528,125 @@ const num = Number('23');
 //     console.log(alex[i], typeof alex[i]);
 // };
 
-const alex = [
-    'Alex',
-    'kl',
-    2037 - 1993,
-    'teacher',
-    ['Michael', 'Jim', 'Steven'],
-];
+// const alex = [
+//     'Alex',
+//     'kl',
+//     2037 - 1993,
+//     'teacher',
+//     ['Michael', 'Jim', 'Steven'],
+// ];
 
-for(let i = alex.length - 1; i > -1; i--) [
-    console.log(alex[i])
-];
+// for(let i = alex.length - 1; i > -1; i--) [
+//     console.log(alex[i]);
+// ];
+
+// // for(let exercise = 1;  exercise < 4; exercise++) {
+// //     console.log(`-------- Starting exercise ${exercise}`);
+
+// //     for(let rep = 1; rep < 5; rep++) {
+// //         console.log(`Exercise ${exercise} --- Lifting weight repetition ${rep}`);
+// //     }
+// // };
+
+// // for(let rep = 1; rep < 5; rep++) {
+// //     console.log(`Exercise ${exercise} --- Lifting weight repetition ${rep}`)
+// // }
+
+// let rep = 1;
+// while(rep < 10) {
+//     console.log(`While loop repetition ${rep}`);
+//     rep++;
+// };
+
+// let dice = Math.round(Math.random() * 10);
+// console.log(dice);
+// if (dice === 10) {
+//     console.log('The dice equals 10!!! You are the winner!')
+// }
+
+// while(dice !== 10) {
+//     console.log(`The dice is ${dice}`);
+//     dice = Math.round(Math.random() * 10);
+//     if (dice === 10) {
+//         console.log('The dice equals 10!!! You are the winner!')
+//     }
+// };
+
+// let dice = Math.trunc(Math.random() * 10) + 1;
+// console.log(dice);
+
+// while(dice !== 10) {
+//     console.log(`The dice is ${dice}`);
+//     dice = Math.trunc(Math.random() * 10) + 1;
+//     console.log(dice);
+// };
+
+// if (dice === 10) {
+//     console.log('You rolled 10!!! You are the winner!')
+// };
+
+// // Coding challenge
+
+// const calcTip = function (bill) {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// const tips = [];
+// const totals = [];
+
+// for(let i = 0; i < bills.length; i++) {
+//     tips[i] = calcTip(bills[i]);
+//     console.log(bills[i], tips[i], totals[i]);
+//     totals[i] = bills[i] + tips[i];
+//     console.log(bills[i], tips[i], totals[i]);
+
+// };
+
+// const calcAverage = function (arr) {
+//     let sum = 0;
+//     for(let j = 0; j < arr.length; j++) {
+//         sum = (sum + arr[j]);
+//         console.log(`----- calcAverage ----- ${sum}`);
+//     };
+//     console.log(sum);
+//     return sum / (arr.length);
+//     console.log(average);
+
+// };
+
+// const average = calcAverage(totals);
+
+// console.log(bills, tips, totals, `The average is  ${average}`);
+
+// // Real answer
+
+// const calcTip = function (bill) {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// const tips = [];
+// const totals = [];
+
+// for(let i = 0; i < bills.length; i++) {
+//     const tip = calcTip(bills[i]);
+//     tips.push(tip);
+//     totals.push(tip + bills[i]);
+// }
+
+// const calcAverage = function (arr) {
+//     let sum = 0;
+//     for(let i = 0; i < arr.length; i++) {
+//         sum += arr[i];
+//     }
+//     return sum / (arr.length);
+// }
+
+// const average = calcAverage(totals);
+
+// console.log(bills, tips, totals, `The average is  ${average}`);
+// console.log(calcAverage(totals));
+
