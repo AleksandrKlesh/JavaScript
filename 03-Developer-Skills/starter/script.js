@@ -71,50 +71,116 @@
 
 // // Debugging
 
-const measureKelvin = function () {
-  const measurement = {
-    type: 'temp',
-    unit: 'celsius',
+// const measureKelvin = function () {
+//   const measurement = {
+//     type: 'temp',
+//     unit: 'celsius',
 
-    // C) FIX
-    // value: Number(prompt('Degrees celsius:')),
-    value: 10,
-  };
-  //   console.log(measurement.value);
-  //   console.warn(measurement.value);
-  //   console.error(measurement.value);
+//     // C) FIX
+//     // value: Number(prompt('Degrees celsius:')),
+//     value: 10,
+//   };
+//   //   console.log(measurement.value);
+//   //   console.warn(measurement.value);
+//   //   console.error(measurement.value);
 
-  // B) FIND
-  console.table(measurement);
+//   // B) FIND
+//   console.table(measurement);
 
-  const kelvin = measurement.value + 273;
-  return kelvin;
-};
-// A) IDENTIFY
-console.log(measureKelvin());
+//   const kelvin = measurement.value + 273;
+//   return kelvin;
+// };
+// // A) IDENTIFY
+// console.log(measureKelvin());
 
-// // Using a debugger
+// // // Using a debugger
 
-const calcTempAmplitudeBug = function (t1, t2) {
-  const temps = t1.concat(t2);
-  console.log(temps);
+// const calcTempAmplitudeBug = function (t1, t2) {
+//   const temps = t1.concat(t2);
+//   console.log(temps);
 
-  let max = 0;
-  let min = 0;
+//   let max = 0;
+//   let min = 0;
 
-  for (let i = 0; i < temps.length; i++) {
-    const curTemp = temps[i];
-    if (typeof curTemp !== 'number') continue;
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
+//     if (typeof curTemp !== 'number') continue;
 
-    debugger;
-    if (curTemp > max) max = curTemp;
-    if (curTemp < min) min = curTemp;
+//     debugger;
+//     if (curTemp > max) max = curTemp;
+//     if (curTemp < min) min = curTemp;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
+// // A) IDENTIFY
+
+// console.log(amplitudeBug);
+
+// // CODING CHALLENGE
+
+// Given an array of forecasted maximum temperatures, the thermometer displays a string with the given temperatures. Example: [17, 21, 23] will print "... 17oC in 1 days ... 21oC in 2 days ... 23oC in 3 days ..."
+
+// 1. Ask right questions.
+// - What to make? Answer: a thermometer.
+// - What does it do? It displays/prints a string with the given temperatures? "... 17oC in 1 days ... 21oC in 2 days ... 23oC in 3 days ..."
+// - WHere does the
+// - What are the values of the array(forecasted maximum temperatures)? [17, 21, 23]
+// - How many days do the temperatures got measured? Unknown
+
+// 2. Sub-problems.
+// - Create an array of forecasted maximum temperatures.
+// - Log the result.
+// - How to display a string with the given temperatures? Create variable forecast. Template literals + forecast itself. PUSH METHOD.
+// - How to count the amount of days temperatures got measured? Create a loop.
+// - Create a function which takes an array as temps.
+
+const temperatures = [17, 21, 23];
+const temperaturesNew = [12, 5, -5, 0, 4];
+
+const printForecast = function (temps) {
+  let thermometer = [];
+  let forecast = '';
+  for (let days = 0; days < temps.length; days++) {
+    thermometer.push(`... ${temps[days]} in ${days + 1} days `);
+    forecast += `${thermometer[days]}`;
   }
-  console.log(max, min);
-  return max - min;
+  return forecast;
 };
 
-const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
-// A) IDENTIFY
+console.log(printForecast(temperatures));
+console.log(printForecast(temperaturesNew));
 
-console.log(amplitudeBug);
+// A. Idenfify the bug.
+// - temps[days + 1]
+// let thermometer = thermometer +
+// return thermometer inside the for loop
+// define 'thermometer' before the for loop
+// days < temps.length
+
+// CODING CHALLENGE: ANSWER
+
+// TEST DATA1:[17, 21, 23];
+// TEST DATA1:[12, 5, -5, 0, 4];
+
+// 1. Understanding the problem.
+// - Array transformed to string, separated by ...
+// - What is the X days? Answer: index + 1
+
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+
+console.log(`... ${data1[0]} ... ${data1[1]} ... ${data1[2]} ...`);
+
+const printForecastNew = function (arr) {
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str += `${arr[i]}C in ${i + 1} days ... `;
+  }
+  console.log('... ' + str);
+};
+
+printForecastNew(data1);
+printForecastNew(data2);
