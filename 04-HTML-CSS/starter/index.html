@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Learning HTML and CSS</title>
+    <link href="style.css" rel="stylesheet"/>
 </head>
+
+<header>Main menu</header>
+
 <body>
     <h1>JavaScript is fun, but so is HTML and CSS</h1>
-    <p>Some descriptions</p>
-    
-    <a href=""></a>
+    <p class="first">Some descriptions
+        <a 
+        href="google.com"
+        > and an anchor
+        </a>
+    </p>
 
-    <p>Paragraph</p>
+    <p class="second">Paragraph</p>
 
     <img 
     id="picture"
+    src="https://www.mooc.org/hubfs/applications-of-computer-programming.jpg"
+    width="400"
+    height="300"
     />
 
     <form id="your-name">
         <h2>Your name here</h2>
-        <p>Please fill in this form</p>
+        <p class="first">Please fill in this form</p>
         <input
         type="text"
         placeholder="TYPE HERE"
@@ -31,6 +42,7 @@
         <h3>See you</h3>
     </div>
 
+    <script src="script.js"></script>
 
 </body>
 </html>
