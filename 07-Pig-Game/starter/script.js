@@ -23,6 +23,15 @@ const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 
+const switchPlayer = function () {
+  // Switching to next player
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0; // Ternary operator
+  currentScore = 0;
+  player0El.classList.toggle('player--active');
+  player1EL.classList.toggle('player--active');
+};
+
 const diceRoll = () => Math.trunc(Math.random() * 6 + 1);
 
 // Rolling dicw fuctionality
@@ -41,11 +50,22 @@ btnRoll.addEventListener('click', function () {
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
   } else {
-    // Switching to next player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0; // Ternary operator
-    currentScore = 0;
-    player0El.classList.toggle('player--active');
-    player1EL.classList.toggle('player--active');
+    switchPlayer();
   }
+});
+
+btnHold.addEventListener('click', function () {
+  // 1. Add current score to active player's score.
+  scores[activePlayer] += currentScore;
+
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+
+  // 2. Check if player's score is >=100.
+  if (scores[activePlayer] >= 100) {
+  }
+  // Finish the game
+
+  // Switch to the next player
+  switchPlayer();
 });
