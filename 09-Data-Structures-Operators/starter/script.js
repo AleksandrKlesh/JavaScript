@@ -5,6 +5,26 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+
+///////////////////////////// ES 6 features ////////////////////////////
+
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -12,21 +32,24 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
+  //////////////////// ES6 enhanced object literals ///////////////////
+  openingHours,
+
+  // openingHours: {
+  //   thu: {
+  //     open: 12,
+  //     close: 22,
+  //   },
+  //   fri: {
+  //     open: 11,
+  //     close: 23,
+  //   },
+  //   sat: {
+  //     open: 0, // Open 24 hours
+  //     close: 24,
+  //   },
+  // },
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -378,7 +401,10 @@ const playersFinal = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 
 // 5
 
-const { team1, x: draw, team2 } = game.odds;
+// const { team1, x: draw, team2 } = game.odds;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 
 // 6
 
@@ -391,8 +417,127 @@ printGoals(...game.scored);
 
 // 7
 
-const win =
-  (Math.trunc(team1 / draw) && 'Team 1 is more likely to win!') ||
-  (Math.trunc(team2 / draw) && 'Team 2 is more likely to win!');
+// const win =
+//   (Math.trunc(team1 / draw) && 'Team 1 is more likely to win!') ||
+//   (Math.trunc(team2 / draw) && 'Team 2 is more likely to win!');
 
-console.log(win);
+team1 > team2 && console.log('Team 2 is more likely to win!');
+team1 < team2 && console.log('Team 1 is more likely to win!');
+
+// console.log(win);
+
+/////////////////////// For-of loop //////////////////////////
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// for (const item of menu.entries()) console.log(`${item[0] + 1}: ${item[1]}`);
+
+// Destructuring in for-of loop
+
+for (const [i, el] of menu.entries()) console.log(`${i + 1}: ${el}`);
+
+console.log([...menu.entries()]);
+
+////////////////////////// Optional chaining (?.) ES2020 /////////////////////////////
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon.open);
+
+// WITH optional chaining
+
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  // console.log(day);
+  const open =
+    restaurant.openingHours[day]?.open ?? `The restaurant closed on ${day}`;
+  console.log(`On ${day} we open at ${open}`);
+}
+
+// Method
+
+console.log(restaurant.order?.(0, 1) ?? 'Order does not exists');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Order does not exists');
+
+// Arrays
+
+const users = [{ name: 'Alex', email: 'hello@gmail.com' }];
+
+// const users = [];
+console.log(users[0]?.name ?? 'User array empty');
+
+////////////////////////// LOOPING over Objects ///////////////////////////
+
+// Properties NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+console.log(`We open ${properties.length} days a week`);
+
+let openStr = `We are open ${properties.length} days a week:`;
+for (const day of properties) openStr += `${day}, `;
+console.log(openStr);
+
+// Property VALUES
+
+const values = Object.values(openingHours);
+console.log(values);
+
+for (const canVisit of values) console.log(canVisit);
+
+// Loop over entire Object (with destructuring)
+
+const entries = Object.entries(openingHours);
+console.log(openingHours);
+
+for (const [key, { open, close }] of entries)
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+
+////////////////////////// Coding challenge 2 ///////////////////////////////
+
+// 1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player} `);
+}
+// for (let i = 0; i < game.scored.length; i++) {
+//   console.log(`Goal ${i + 1}: ${game.scored[i]} `);
+// }
+
+// 2.
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) {
+  console.log(odd);
+  average += odd;
+}
+average /= odds.length;
+console.log(average);
+
+// 3.
+// Odd of victory Bayern Munich: 1.33
+// Odd of draw: 3.25
+// Odd of victory Borrussia Dortmund: 6.5
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
+}
+
+// 4.
+// Bonus:Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+//      {
+//        Gnarby: 1,
+//        Hummels: 1,
+//        Lewandowski: 2
+// }
+
+const scores = {};
+// Use optional chaining
