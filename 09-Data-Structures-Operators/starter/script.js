@@ -539,5 +539,29 @@ for (const [team, odd] of Object.entries(game.odds)) {
 //        Lewandowski: 2
 // }
 
-const scores = {};
-// Use optional chaining
+const scorers = {};
+// const names = game.scored.entries();
+// let j = 1;
+// // const [i, names] = game.scored.entries();
+// for (const [i, name] of names) {
+//   if (!scorers[`${name}`]) {
+//     scorers[`${name}`] = j;
+//   } else {
+//     scorers[`${name}`] = j + 1;
+//   }
+//   console.log(i, name);
+// }
+
+//////////// Real solution ///////////
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+  // console.log(scorers);
+}
+console.log(scorers);
+
+/////////// Practice /////////////
+const a = {};
+
+for (const b of game.scored) a[b] ? a[b]++ : (a[b] = 1);
+
+console.log(a, 'THis is a');
