@@ -565,3 +565,259 @@ const a = {};
 for (const b of game.scored) a[b] ? a[b]++ : (a[b] = 1);
 
 console.log(a, 'THis is a');
+
+/////////////////////////////////// Sets (unique values) ///////////////////////////////////
+
+const orderSet = new Set(['Pizza', 'Pasta', 'Spagetti', 'Pizza', 'Pizza']);
+console.log(orderSet);
+
+console.log(orderSet.add('Bread'));
+console.log(orderSet.delete('Bread')); // Boolean true
+console.log(orderSet);
+console.log(orderSet.has('Pasta')); // Boolean true
+console.log(orderSet.size); // 3
+console.log(orderSet.values());
+console.log(orderSet.clear()); // undefined
+console.log(orderSet); // 0 elements in the Set
+
+// Creating Set from an array
+const staff = ['Manager', 'Waiter', 'Waiter', 'Chef', 'Chef'];
+const staffUnique = [...new Set(staff)];
+
+console.log(staffUnique);
+
+// How many unique positions there are
+console.log(new Set(['Potato', 'Carrot', 'Cucumber', 'Potato', 'Carrot']).size);
+
+// How many letters in the string
+console.log(new Set('Hello world!').size);
+
+///////////////////////////// Maps ///////////////////////////////
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+console.log(rest.set(1, 'Firenze, Italy'));
+rest.set(2, 'Lisbon, portugal');
+
+console.log(rest);
+
+// Chaining Maps
+
+rest
+  .set('categories')
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+// Get method
+
+console.log(rest.get('open'));
+console.log(rest.get(true));
+
+const time = 11;
+console.log(rest.get(time >= rest.get('open') && time < rest.get('close')));
+
+// Has method
+
+console.log(rest.has('categories'));
+
+// Delete method
+
+console.log(rest.delete(2));
+console.log(rest);
+
+// Size property. NOT a function
+
+console.log(rest.size);
+
+// Clear method
+
+// rest.clear();
+console.log(rest);
+
+// Using arrays as keys in Maps
+
+const arr = [1, 2];
+// rest.set([1, 2], 'Test');  // 1. [1, 2]
+// console.log(rest.get([1, 2])); // 2. Doesn't work because in the heap [1, 2] and [1, 2] are different objects in the heap
+
+rest.set(arr, 'Test'); // 1. This should
+console.log(rest.get(arr)); // 2. work!
+
+rest.set(document.querySelector('h1'), 'Heading');
+
+console.log(rest);
+
+// Instead of .set method (adding to Map)
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavsScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Incorrect, try again'],
+]);
+
+console.log(question);
+
+console.log(Object.entries(openingHours));
+
+// Easy way to convers Object into Array
+
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+//Quzz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+const answer = 3;
+// const answer = Number(prompt('Your answer:'));
+console.log(answer);
+
+// Getting access to the boolean key in the Map
+
+// if (answer === question.get('correct')) {
+//   console.log(question.get(true));
+// } else {
+//   console.log(question.get(false));
+// }
+
+console.log(question.get(question.get('correct') === answer));
+
+// Converting Map to Array
+
+console.log([...question]);
+
+console.log([...question.values()]);
+console.log([...question.keys()]);
+console.log([...question.entries()]);
+
+///////////////////////////////// Coding challenge 3 /////////////////////////////////
+
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1.
+const events = new Set(gameEvents.values());
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.
+
+// My solution
+
+// const arrAvg = [...gameEvents.keys()];
+// // const avgTime = Math.trunc(arrAvg[arrAvg.length - 1] / gameEvents.size);
+// // console.log(`An event happened, on average, every ${avgTime} minutes`);
+
+// Different solution
+const lastEvent = [...gameEvents.keys()].pop(); // pop() method deletes and returns the value of the last element
+const avgTime = Math.trunc(lastEvent / gameEvents.size);
+console.log(`An event happened, on average, every ${avgTime} minutes`);
+
+// 4.
+
+// My solution
+
+// for (const [key, value] of gameEvents.entries()) {
+//   let half = 0;
+//   key <= 45 ? (half = 'FIRST') : (half = 'SECOND');
+//   console.log(`[${half} HALF] ${key}: ${value}`);
+// }
+
+// Different solution
+
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+
+/////////////////////////////////// String methods ///////////////////////////////
+
+const airLine = 'Viet Jet Air';
+const plane = 'A320';
+
+console.log(airLine[0]);
+console.log(airLine[1]);
+console.log(airLine[2]);
+console.log('BDBD'[1]);
+
+console.log(airLine.length);
+console.log(plane.length);
+
+// IndexOf method
+
+console.log(airLine.indexOf('e'));
+console.log(airLine.lastIndexOf('e'));
+console.log(airLine.indexOf('Jet'));
+
+// Slice method
+
+console.log(airLine.slice(5));
+console.log(airLine.slice(0, 4));
+
+console.log(airLine.slice(0, airLine.indexOf(' ')));
+console.log(airLine.slice(airLine.indexOf(' '), airLine.lastIndexOf(' ')));
+console.log(airLine.slice(airLine.indexOf(' ') + 1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log(`You got a middle seat!`);
+  else console.log(`You got lucky!`);
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('13C');
+checkMiddleSeat('20E');
+
+console.log(new String('Alex'));
+console.log(typeof new String('Alex'));
+console.log(typeof new String('Alex').slice(1));
+
+// Upper, lower case methods
+
+console.log(airLine.toUpperCase());
+console.log(airLine.toLowerCase());
+
+const passenger = 'aLeX';
+const lowerPassenger = passenger.toLowerCase();
+const correctPassenger =
+  lowerPassenger[0].toUpperCase() + lowerPassenger.slice(1);
+
+console.log(correctPassenger);
+
+// Comparing emails
