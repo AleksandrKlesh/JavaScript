@@ -821,3 +821,177 @@ const correctPassenger =
 console.log(correctPassenger);
 
 // Comparing emails
+
+const email = 'hello@alex.com';
+const loginEmail = `  HeLLo@ALex.com  \n`;
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimEmail = lowerEmail.trim();
+// console.log(trimEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// Replacing
+
+const priceGB = '288,97&';
+const priceUS = priceGB.replace('&', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23, boarding door 23!';
+console.log(announcement.replace(/door/g, 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+// Boolean
+
+const planeNew = 'Airbus A320neo';
+console.log(planeNew.includes('A320'));
+console.log(planeNew.includes('Boeing'));
+console.log(planeNew.startsWith('Air'));
+
+if (planeNew.includes('Airbus') && planeNew.endsWith('neo'))
+  console.log(`Part of the NEW Airbus family`);
+
+// Practice exercise
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife' || 'gun'))
+    console.log(`You're not allowed for boarding with your ${items}`);
+};
+
+checkBaggage('I have clothes, some Food and a laptop');
+checkBaggage('There are shoes and a pocket knife in my baggage');
+checkBaggage(`i've got a gun to protect myself`);
+
+// Split and Join methods
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Alex Kl'.split(' '));
+
+const [firstName, lastName] = 'Alex Kl'.split(' ');
+console.log(firstName, lastName);
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1)); // 1.
+    // namesUpper.push(n.replace(n[0], n[0].toUpperCase())); // 2. Different approach to capitalize the first letter
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('alex kl');
+capitalizeName('anna richard blomic');
+
+// Padding. padStart or padEnd
+
+const message = 'Go to Gate 23!';
+console.log(message.padStart(25, '+').padEnd(30, '+'));
+console.log('Alex'.padStart(20, '+').padEnd(30, '+'));
+
+const creditCardMask = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(creditCardMask(2739879217927489));
+console.log(creditCardMask(108723));
+console.log(creditCardMask('32874283974837792'));
+
+// Repeat method
+
+const message2 = 'Bad weather... All departures are delayed! ';
+console.log(message2.repeat(10));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line. ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(3);
+planesInLine(5);
+planesInLine(19);
+
+/////////////////////////////// Coding challenge 4. ////////////////////////////////////
+
+// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+// The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed.
+
+// Test data (pasted to textarea, including spaces):
+
+// underscore_case
+//  first_name
+// Some_Variable
+//   calculate_AGE
+// delayed_departure
+
+// Should produce this output (5 separate console.log outputs):
+// underscoreCase ✅
+// firstName ✅
+// someVariable ✅
+// calculateAge ✅
+// delayedDeparture ✅
+
+// Hints:
+// § Remember which character defines a new line in the textarea 😉
+// § The solution only needs to work for a variable made out of 2 words, like a_b
+// § Start without worrying about the ✅. Tackle that only after you have the variable
+// name conversion working 😉
+// § This challenge is difficult on purpose, so start watching the solution in case
+// you're stuck. Then pause and continue!
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const textAreaEl = document.querySelector('textarea');
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', function () {
+  const arr = textAreaEl.value.trim().split('\n'); // Split the string into an array based on '\n'
+  console.log(arr[1].trim()); // Delete white spaces in each array element. After that need to applay code below to each array element!!!
+
+  // Valid code below. Works, but don't delete white spaces in strings. Need to join two parts of code.
+
+  // const str = (textAreaEl.value + '').toLowerCase().split('_');
+  // const textArr = [];
+  // const firstLow = str[0] + '';
+  // for (const s of str) textArr.push(s.replace(s[0], s[0].toUpperCase()));
+  // textArr.shift();
+  // textArr.unshift(firstLow.replace(firstLow[0], firstLow[0].toLowerCase()));
+  // textAreaEl.value = textArr.join('');
+});
+
+// const camelCase = function (text) {
+//   const str = (text + '').toLowerCase().split('_');
+//   const textArr = [];
+//   const firstLow = str[0] + '';
+//   for (const s of str) textArr.push(s.replace(s[0], s[0].toUpperCase()));
+//   textArr.shift();
+//   textArr.unshift(firstLow.replace(firstLow[0], firstLow[0].toLowerCase()));
+//   return textArr.join('');
+// };
+
+// camelCase('hi_hello_my_little_friend');
+
+// console.log(camelCase('underscore_case').padEnd(30, '✅'));
+// camelCase('first_name');
+// camelCase('Some_Variable');
+// camelCase('calculate_AGE');
+// camelCase('delayed_departure');
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1)); // 1.
+//     // namesUpper.push(n.replace(n[0], n[0].toUpperCase())); // 2. Different approach to capitalize the first letter
+//   }
+//   console.log(namesUpper.join(' '));
+// };
