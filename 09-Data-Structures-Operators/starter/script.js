@@ -954,10 +954,33 @@ const textAreaEl = document.querySelector('textarea');
 const btn = document.querySelector('button');
 
 btn.addEventListener('click', function () {
-  const arr = textAreaEl.value.trim().split('\n'); // Split the string into an array based on '\n'
-  console.log(arr[1].trim()); // Delete white spaces in each array element. After that need to applay code below to each array element!!!
+  // creating an array from textarea
+  const underscoreArr = textAreaEl.value.trim().split('\n');
+  let i = 0;
+  const camelArr = [];
+  // loop over the array from the textarea
+  for (const element of underscoreArr) {
+    const upperCamelArr = [];
+    const stringArr = element.trim().toLowerCase().split('_');
+    // loop over array of strings
+    for (const strEl of stringArr) {
+      upperCamelArr.push(strEl.replace(strEl[0], strEl[0].toUpperCase()));
+      if (upperCamelArr[i].length <= 20) {
+        upperCamelArr[i] + ' ';
+      } else {
+        console.log(upperCamelArr[i]);
+      }
+    }
+    upperCamelArr.unshift(upperCamelArr.shift().toLocaleLowerCase());
+    i++;
 
-  // Valid code below. Works, but don't delete white spaces in strings. Need to join two parts of code.
+    // final string
+    const finalStr = upperCamelArr.join(''); // .padEnd(, '✅'); // ... + i
+    camelArr.push(finalStr);
+  }
+  // final string of strings
+  const finalArr = camelArr.join('\n');
+  textAreaEl.value = finalArr;
 
   // const str = (textAreaEl.value + '').toLowerCase().split('_');
   // const textArr = [];
