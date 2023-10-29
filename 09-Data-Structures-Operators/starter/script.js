@@ -978,6 +978,7 @@ btn.addEventListener('click', function () {
     // adding ✅
     finalStr += '✅'.repeat(i);
     // adding the final string into an array
+    console.log(finalStr);
     camelArr.push(finalStr);
   }
   // final string of strings
