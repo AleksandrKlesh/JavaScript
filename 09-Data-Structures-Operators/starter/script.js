@@ -956,7 +956,9 @@ const btn = document.querySelector('button');
 btn.addEventListener('click', function () {
   // creating an array from textarea
   const underscoreArr = textAreaEl.value.trim().split('\n');
+  // variable to increment
   let i = 0;
+
   const camelArr = [];
   // loop over the array from the textarea
   for (const element of underscoreArr) {
@@ -965,30 +967,22 @@ btn.addEventListener('click', function () {
     // loop over array of strings
     for (const strEl of stringArr) {
       upperCamelArr.push(strEl.replace(strEl[0], strEl[0].toUpperCase()));
-      if (upperCamelArr[i].length <= 20) {
-        upperCamelArr[i] + ' ';
-      } else {
-        console.log(upperCamelArr[i]);
-      }
     }
     upperCamelArr.unshift(upperCamelArr.shift().toLocaleLowerCase());
+    // incrementing
     i++;
-
     // final string
-    const finalStr = upperCamelArr.join(''); // .padEnd(, '✅'); // ... + i
+    let finalStr = upperCamelArr.join(''); // .padEnd(14 + i, '✅'); // .padEnd(, '✅'); // ... + i
+    // adding white spaces up to 20 characters
+    finalStr.length <= 20 && (finalStr += ' '.repeat(20 - finalStr.length));
+    // adding ✅
+    finalStr += '✅'.repeat(i);
+    // adding the final string into an array
     camelArr.push(finalStr);
   }
   // final string of strings
   const finalArr = camelArr.join('\n');
   textAreaEl.value = finalArr;
-
-  // const str = (textAreaEl.value + '').toLowerCase().split('_');
-  // const textArr = [];
-  // const firstLow = str[0] + '';
-  // for (const s of str) textArr.push(s.replace(s[0], s[0].toUpperCase()));
-  // textArr.shift();
-  // textArr.unshift(firstLow.replace(firstLow[0], firstLow[0].toLowerCase()));
-  // textAreaEl.value = textArr.join('');
 });
 
 // const camelCase = function (text) {
