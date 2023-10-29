@@ -1,8 +1,8 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
 
@@ -890,6 +890,34 @@ const capitalizeName = function (name) {
 capitalizeName('alex kl');
 capitalizeName('anna richard blomic');
 
+// const camelCase = function (text) {
+//   const str = (text + '').toLowerCase().split('_');
+//   const textArr = [];
+//   const firstLow = str[0] + '';
+//   for (const s of str) textArr.push(s.replace(s[0], s[0].toUpperCase()));
+//   textArr.shift();
+//   textArr.unshift(firstLow.replace(firstLow[0], firstLow[0].toLowerCase()));
+//   return textArr.join('');
+// };
+
+// camelCase('hi_hello_my_little_friend');
+
+// console.log(camelCase('underscore_case').padEnd(30, '✅'));
+// camelCase('first_name');
+// camelCase('Some_Variable');
+// camelCase('calculate_AGE');
+// camelCase('delayed_departure');
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1)); // 1.
+//     // namesUpper.push(n.replace(n[0], n[0].toUpperCase())); // 2. Different approach to capitalize the first letter
+//   }
+//   console.log(namesUpper.join(' '));
+// };
+
 // Padding. padStart or padEnd
 
 const message = 'Go to Gate 23!';
@@ -950,66 +978,84 @@ planesInLine(19);
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
-const textAreaEl = document.querySelector('textarea');
-const btn = document.querySelector('button');
+///////////// My solution ////////////
 
-btn.addEventListener('click', function () {
-  // creating an array from textarea
-  const underscoreArr = textAreaEl.value.trim().split('\n');
-  // variable to increment
-  let i = 0;
+// const textAreaEl = document.querySelector('textarea');
+// const btn = document.querySelector('button');
 
-  const camelArr = [];
-  // loop over the array from the textarea
-  for (const element of underscoreArr) {
-    const upperCamelArr = [];
-    const stringArr = element.trim().toLowerCase().split('_');
-    // loop over array of strings
-    for (const strEl of stringArr) {
-      upperCamelArr.push(strEl.replace(strEl[0], strEl[0].toUpperCase()));
-    }
-    upperCamelArr.unshift(upperCamelArr.shift().toLocaleLowerCase());
-    // incrementing
-    i++;
-    // final string
-    let finalStr = upperCamelArr.join(''); // .padEnd(14 + i, '✅'); // .padEnd(, '✅'); // ... + i
-    // adding white spaces up to 20 characters
-    finalStr.length <= 20 && (finalStr += ' '.repeat(20 - finalStr.length));
-    // adding ✅
-    finalStr += '✅'.repeat(i);
-    // adding the final string into an array
-    console.log(finalStr);
-    camelArr.push(finalStr);
+// btn.addEventListener('click', function () {
+//   // creating an array from textarea
+//   const underscoreArr = textAreaEl.value.trim().split('\n');
+//   // variable to increment
+//   let i = 0;
+//   const camelArr = [];
+//   // loop over the array from the textarea
+//   for (const element of underscoreArr) {
+//     const upperCamelArr = [];
+//     const stringArr = element.trim().toLowerCase().split('_');
+//     // loop over array of strings
+//     for (const strEl of stringArr) {
+//       upperCamelArr.push(strEl.replace(strEl[0], strEl[0].toUpperCase()));
+//     }
+//     upperCamelArr.unshift(upperCamelArr.shift().toLocaleLowerCase());
+//     // incrementing
+//     i++;
+//     // final string
+//     let finalStr = upperCamelArr.join(''); // .padEnd(14 + i, '✅'); // .padEnd(, '✅'); // ... + i
+//     // adding white spaces up to 20 characters
+//     finalStr.length <= 20 && (finalStr += ' '.repeat(20 - finalStr.length));
+//     // adding ✅
+//     finalStr += '✅'.repeat(i);
+//     // adding the final string into an array
+//     console.log(finalStr);
+//     camelArr.push(finalStr);
+//   }
+//   // final string of strings
+//   const finalArr = camelArr.join('\n');
+//   textAreaEl.value = finalArr;
+// });
+
+////////// Different solution ///////////
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  console.log(rows);
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
   }
-  // final string of strings
-  const finalArr = camelArr.join('\n');
-  textAreaEl.value = finalArr;
 });
 
-// const camelCase = function (text) {
-//   const str = (text + '').toLowerCase().split('_');
-//   const textArr = [];
-//   const firstLow = str[0] + '';
-//   for (const s of str) textArr.push(s.replace(s[0], s[0].toUpperCase()));
-//   textArr.shift();
-//   textArr.unshift(firstLow.replace(firstLow[0], firstLow[0].toLowerCase()));
-//   return textArr.join('');
-// };
+////////////////////////////// String methods practice ////////////////////////////
 
-// camelCase('hi_hello_my_little_friend');
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
 
-// console.log(camelCase('underscore_case').padEnd(30, '✅'));
-// camelCase('first_name');
-// camelCase('Some_Variable');
-// camelCase('calculate_AGE');
-// camelCase('delayed_departure');
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// const capitalizeName = function (name) {
-//   const names = name.split(' ');
-//   const namesUpper = [];
-//   for (const n of names) {
-//     namesUpper.push(n[0].toUpperCase() + n.slice(1)); // 1.
-//     // namesUpper.push(n.replace(n[0], n[0].toUpperCase())); // 2. Different approach to capitalize the first letter
-//   }
-//   console.log(namesUpper.join(' '));
-// };
+////////////////////////// My solution /////////////////////////
+const flightsInfo = flights.split('+');
+for (const [i, flight] of flightsInfo.entries()) {
+  const info = flight.trim().split(';');
+  const str = info[0].replaceAll('_', ' ');
+  const strUpper = str.split(' ');
+
+  const goFrom = info[1].slice(0, 3).toUpperCase();
+  const goTo = info[2].slice(0, 3).toUpperCase();
+  const time = info[3];
+  const output = `${str.startsWith(' Delayed') ? '🔴' : ''}${
+    str + ' '
+  }from ${goFrom} to ${goTo} (${time.replace(':', 'h')})`.padStart(50);
+  console.log(output);
+}
+
+///////////////////////// Different solution /////////////////////////
